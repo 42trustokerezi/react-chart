@@ -12,7 +12,8 @@ ChartJS.register(
 const DisplayChart = () => {
     const [chart, setChart] = useState([])
 
-    var baseUrl  = 'https://coinranking1.p.rapidapi.com/coins/?limit=20'
+    var apiKey = '83b76aa387mshf0fda19515001f8p1dff42jsn936d46847973'
+    var baseUrl  = `https://coinranking1.p.rapidapi.com/coins/?limit=20&rapidapi-key=${apiKey}`
     
     useEffect(() => {
         const fetchCoins = async () => {
@@ -38,10 +39,10 @@ const DisplayChart = () => {
     }, [baseUrl, ])
 
     var data = {
-        labels: chart?.coins.map(i => i.name),
+        labels: chart?.coins?.map(i => i.name),
         datasets: [{
-            label: `${chart?.coins.length} Coins`,
-            data: chart?.coins.map(i => i.price),
+            label: `${chart?.coins?.length} Coins`,
+            data: chart?.coins?.map(i => i.price),
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
